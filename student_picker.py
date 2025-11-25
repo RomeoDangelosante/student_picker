@@ -19,7 +19,7 @@ class StudentPicker:
         query = query.strip()
         students = self.students
 
-        # 1️⃣ PRIORITÀ 1 – match esatto come sottostringa
+       #PRIORITÀ 1 – match esatto come sottostringa
         exact_regex = re.compile(re.escape(query), re.IGNORECASE)
         exact_matches = [s for s in students if exact_regex.search(s)]
 
@@ -27,7 +27,7 @@ class StudentPicker:
             print("[PRIORITÀ 1] Trovati match esatti.")
             return exact_matches
 
-        # 2️⃣ PRIORITÀ 2 – gruppo di caratteri
+        #PRIORITÀ 2 – gruppo di caratteri
         group_regex = re.compile(f"[{re.escape(query)}]", re.IGNORECASE)
         group_matches = [s for s in students if group_regex.search(s)]
 
@@ -35,7 +35,7 @@ class StudentPicker:
             print("[PRIORITÀ 2] Trovati match come gruppo di caratteri.")
             return group_matches
 
-        # 3️⃣ PRIORITÀ 3 – range min-max + spazio
+        #PRIORITÀ 3 – range min-max + spazio
         minimo = min(query.lower())
         massimo = max(query.lower())
 
